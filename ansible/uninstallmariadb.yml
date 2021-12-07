@@ -1,0 +1,5 @@
+- hosts: db
+  tasks:
+   - name: Delete mariadb
+     become: yes
+     apt: name=mariadb state=absent

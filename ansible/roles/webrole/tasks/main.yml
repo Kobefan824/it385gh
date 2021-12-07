@@ -1,0 +1,22 @@
+---
+# tasks file for webrole
+- name: Install NGINX web service 
+  apt: # name=nginx state=latest
+    name: nginx
+    state: absent
+    update_cache: yes
+  
+- name: Create target web folders
+  become: yes
+  file: 
+    path: /var/www/html/
+    state: directory
+    mode: 0755
+
+- name: Deploy custom web pages
+  become: yes
+  copy:
+    src: ~/Downloads/eatveg/eatveg-html/
+    dest: /var/www/html/
+
+  notify: monkey

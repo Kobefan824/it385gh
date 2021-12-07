@@ -1,0 +1,16 @@
+---
+# tasks file for useresrole
+- name: Create user (dracula)
+  become: yes
+  user: 
+    name: dracula
+    comment: "Dr Acula"
+    shell: /bin/bash
+
+- name: Create user (rambo)
+  become: yes
+  user:
+    name: rambo
+    comment: "Ram Bo"
+    shell: /bin/bash
+    

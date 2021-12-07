@@ -1,0 +1,60 @@
+[all]
+web1 ansible_host=192.168.0.111
+web2 ansible_host=192.168.0.112
+db1 ansible_host=192.168.0.121 
+db2 ansible_host=192.168.0.122 
+csr1
+csr2
+
+[servers]
+web1
+web2
+db1
+db2
+
+[web]
+web1
+web2
+
+[db]
+db1
+db2
+
+[routers]
+csr1
+csr1
+
+[dev]
+web1
+db1
+
+[prod]
+web2
+db2
+
+[web_dev]
+web1
+
+[web_prod]
+web2
+
+[db_dev]
+db1
+
+[db_prod]
+db2
+
+# common Variables
+[servers:vars]
+ansible_user=justincase
+ansible_password='Password01'
+ansible_connection=ssh
+ansible_ssh_private_key_file=/home/justincase/.ssh/ansible.pub
+
+[routers:vars]
+ansible_user=cisco
+ansible_password=cisco
+ansible_network_os=ios
+ansible_connection=network_cli
+ansible_become_method=enable
+ansible_become_password=cisco

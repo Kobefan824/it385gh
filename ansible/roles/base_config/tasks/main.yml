@@ -1,0 +1,17 @@
+---
+# tasks file for base_config
+#- name: Run the equivalent of "apt-get update"
+# apt:
+#  update_cache: yes
+
+- name: Maintain a consistent /etc/hosts file
+  become: yes
+  copy: 
+    src: /etc/hosts 
+    dest: /etc/hosts 
+
+- name: Install tree
+  become: yes
+  apt: 
+    name: tree 
+    state: present

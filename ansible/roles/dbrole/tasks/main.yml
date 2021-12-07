@@ -1,0 +1,21 @@
+---
+# tasks file for dbrole
+
+- name: Run the equivalent of "apt-get update"
+  apt:
+    update_cache: yes
+
+- name: Install MariaDB 
+  apt:
+    name: mariadb-server
+    state: latest
+    update_cache: yes
+  with_items:
+    - mariadb-client
+    - mariadb-common
+    - mariadb-server
+    
+- name: Start MariaDB service
+  service: 
+    name: mysql
+    state: started 
