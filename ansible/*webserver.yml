@@ -1,18 +1,12 @@
 - hosts: web
   become: true
   gather_facts: false
-
-  tasks:
-    - name: Run the equivalent of "apt-get update"
-      apt:
-        update_cache: yes
-     
   
+  tasks:
     - name: Install NGINX web service 
-      apt: # name=nginx state=latest
-        name: nginx
-        state: absent
-        #update_cache: yes
+      apt: 
+        name=nginx
+        state=absent
         
     - name: Create target web folders
       file: 
@@ -20,50 +14,11 @@
         state: directory
         mode: 0755
 
-    #- name: Deploy custom web pages
-    #  copy:
-    #    src: ~/Downloads/eatveg/eatveg-html/
-    #   dest: /var/www/html/
-    - name: Remove web files
-      file: 
-        path: /var/www/html/
-        state: absent
-      
-      notify:
-        - monkey
-
-
-    - name: Configure firewall to open http
-      become: yes
-      ufw: 
-        rule: allow
-        port: '80'
-        proto: tcp
-
-    - name: Confingure firewall to opne DNS
-      become: yes
-      ufw:
-        rule: allow
-        port: '53'
-        proto: tcp
-
-      notify:
-        - kangaroo
-
-  handlers:
-    - name: kangaroo
-      become: yes
-      ufw:
-        state: reloaded 
-    
-    - name: monkey
-      become: yes
-      service:
-        name: nginx
-        enabled: yes
-        state: restarted  
-
-  
+    - name: Deploy custom web pages
+      copy:
+       src: ~/Downloads/eatveg/eatveg-html/
+       dest: /var/www/html/
+     
 
 
 
