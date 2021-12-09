@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 import paramiko
 import time
 from getpass import getpass
