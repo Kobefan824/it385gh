@@ -7,7 +7,7 @@ csr_ip = '192.168.0.11'
 n_username  = 'cisco'
 n_password = 'cisco'
 
-cmd = 'show ip int brief'
+cmd = 'show ip int brief; hostname Router1'
 conn = paramiko.SSHClient()
 
 conn.set_missing_host_key_policy(paramiko.AutoAddPolicy())
