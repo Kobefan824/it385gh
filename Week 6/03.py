@@ -2,6 +2,7 @@
 import paramiko
 import time
 
+
 n_username = 'justincase' 
 n_password = 'Password01' 
 hostnode = '192.168.0.111'
