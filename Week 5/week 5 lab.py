@@ -29,7 +29,3 @@ if any(char in SpecialCharacters for char in testPassword):
     print('Your Password Passed the Special Character Test')
 else:
     print('Your Password Failed the Special Character Test')
-
-
-
-

@@ -12,7 +12,7 @@ web1_ip = '192.168.0.111'
 db1_ip = '192.168.0.121'
 
 
-command = 'sudo -S groupadd wheel; sudo -S useradd "stranger" -c "Stranger Danger" -G "wheel" -m -p "Password01"; ping -c 4 db1'
+command = 'sudo -S groupadd wheel; sudo -S useradd "stranger" -c "Stranger Danger" -G "wheel" -m -p "Password01"'
 
 conn = paramiko.SSHClient()
 
